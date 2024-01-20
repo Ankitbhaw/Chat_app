@@ -28,8 +28,10 @@ export default function page() {
       const uploadTask = uploadBytesResumable(storageRef, file);
 
       uploadTask.on(
+        'state_changed',
+        null,
         (error) => {
-          console.log(error);
+          console.error(error);
           setErr(true);
         },
         () => {
