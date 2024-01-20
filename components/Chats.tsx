@@ -14,9 +14,9 @@ export default function Chats() {
     };
     lastmessage: {
       text: string;
-      // ... add other properties as needed
+    
     };
-    date: number; // Assuming it's a timestamp
+    date: number; 
   };
   const { currentUser }: any = useAuthContext();
   const { dispatch }: any = useChatContext();

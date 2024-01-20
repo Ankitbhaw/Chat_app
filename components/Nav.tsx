@@ -3,8 +3,10 @@
 import { useAuthContext } from "@/context/AuthContext";
 import { auth } from "@/firebase";
 import { signOut } from "firebase/auth";
+import { useRouter } from "next/navigation";
 
 export default function Nav() {
+  const router = useRouter();
   const { currentUser }:any = useAuthContext();
   return <section className="flex items-center h-14 p-4 justify-between bg-gray-900">
     <span className="text-xl font-bold text-cyan-400">
@@ -13,7 +15,8 @@ export default function Nav() {
     <div className="flex gap-2 items-center">
         <img src={currentUser?.photoURL} alt="" className="rounded-[50%] w-[30px] h-[30px] object-cover"/>
         <span className="text-white">{currentUser?.displayName}</span>
-        <button className="text-sm bg-gray-600 cursor-pointer px-2 py-1 rounded-md" onClick={()=>signOut(auth)}>LogOut</button>
+        <button className="text-sm bg-gray-600 cursor-pointer px-2 py-1 rounded-md" onClick={()=>{signOut(auth)
+         router.push("/login");}}>LogOut</button>
     </div>
   </section>;
 }
