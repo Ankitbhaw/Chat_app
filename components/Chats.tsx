@@ -30,8 +30,8 @@ export default function Chats() {
         unsub();
       };
     };
-    currentUser.uid && getChats();
-  }, [currentUser.uid]);
+    currentUser?.uid && getChats();
+  }, [currentUser?.uid]);
   const handleSelect =(u:any)=>{
     dispatch({
       type: "CHANGE_USER",

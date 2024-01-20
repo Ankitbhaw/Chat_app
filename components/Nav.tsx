@@ -11,8 +11,8 @@ export default function Nav() {
         OurChat
     </span>
     <div className="flex gap-2 items-center">
-        <img src={currentUser.photoURL} alt="" className="rounded-[50%] w-[30px] h-[30px] object-cover"/>
-        <span className="text-white">{currentUser.displayName}</span>
+        <img src={currentUser?.photoURL} alt="" className="rounded-[50%] w-[30px] h-[30px] object-cover"/>
+        <span className="text-white">{currentUser?.displayName}</span>
         <button className="text-sm bg-gray-600 cursor-pointer px-2 py-1 rounded-md" onClick={()=>signOut(auth)}>LogOut</button>
     </div>
   </section>;
