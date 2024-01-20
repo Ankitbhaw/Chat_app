@@ -7,9 +7,20 @@ import { doc, onSnapshot } from "firebase/firestore";
 import { useEffect, useState } from "react";
 
 export default function Chats() {
+  type ChatData = {
+    userInfo: {
+      displayName: string;
+      photoURL: string;
+    };
+    lastmessage: {
+      text: string;
+      // ... add other properties as needed
+    };
+    date: number; // Assuming it's a timestamp
+  };
   const { currentUser }: any = useAuthContext();
   const { dispatch }: any = useChatContext();
-  const [chats, setChats]: any = useState();
+  const [chats, setChats]: [Record<string, ChatData> | undefined, React.Dispatch<React.SetStateAction<Record<string, ChatData> | undefined>>] = useState();
   useEffect(() => {
     const getChats = () => {
       const unsub = onSnapshot(doc(db, "userChats", currentUser.uid), (doc) => {

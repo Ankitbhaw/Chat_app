@@ -7,9 +7,9 @@ import { useEffect, useRef } from "react";
 export default function Message({ message }: any) {
   const { currentUser }: any = useAuthContext();
   const { data }: any = useChatContext();
-  const ref = useRef();
+  const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    ref.current?.scrollIntoView({ behaviour: "smooth" });
+    ref.current?.scrollIntoView({ behavior: "smooth" });
   }, [message]);
  
   return (

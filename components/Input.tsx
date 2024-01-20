@@ -17,7 +17,7 @@ import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 
 export default function Input() {
   const [text, setText] = useState("");
-  const [img, setImg] = useState(null);
+  const [img, setImg] = useState<File | null>(null);
   const { currentUser }: any = useAuthContext();
   const { data }: any = useChatContext();
   const handleSend = async () => {
@@ -94,7 +94,11 @@ export default function Input() {
           type="file"
           id="file"
           className="hidden"
-          onChange={(e) => setImg(e.target.files[0])}
+          onChange={(e) => {
+            if (e.target.files && e.target.files.length > 0) {
+              setImg(e.target.files[0]);
+            }
+          }}
         />
         <button
           className="bg-gray-400 text-black px-3 py-1 rounded-md"
