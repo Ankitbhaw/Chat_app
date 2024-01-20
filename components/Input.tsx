@@ -26,11 +26,10 @@ export default function Input() {
 
       const uploadTask = uploadBytesResumable(storageRef, img);
       uploadTask.on(
-        'state_changed',
+        "state_changed",
         null,
         (error) => {
           console.error(error);
-         
         },
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
